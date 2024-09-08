@@ -1,7 +1,7 @@
 #pragma once
 #include"SinusoidDoc.h"
 
-#define Point CPoint
+
 #define Document CSinusoidDoc
 #define Rect CRect
 class CPoint

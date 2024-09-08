@@ -5,6 +5,55 @@
 
 #pragma once
 
+class Point
+{
+private:
+
+
+	double width, height;
+	double centerY;
+
+	double amplitude, frequency;
+
+	int i;
+
+public:
+	 int points_count = 40;
+	const double pi = 3.14159265358979323846;
+
+	double X()
+	{
+		return (2 * pi * i) / (points_count - 1);
+	}
+	double Y()
+	{
+		return centerY + amplitude * sin(frequency * X());
+	}
+
+	Point(int _i, double _width, double _height,int _points_count)
+	{
+		i = _i;
+
+		width = _width;
+		height = _height;
+
+		frequency = 1;
+
+		amplitude = height / 2;
+		centerY = height / 2;
+		points_count = _points_count;
+
+	}
+
+
+
+};
+
+
+
+
+
+
 
 class CSinusoidDoc : public CDocument
 {

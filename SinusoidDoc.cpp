@@ -1,5 +1,4 @@
-﻿
-// SinusoidDoc.cpp: реализация класса CSinusoidDoc 
+﻿// SinusoidDoc.cpp: реализация класса CSinusoidDoc 
 //
 
 #include "pch.h"

@@ -5,7 +5,7 @@ CPoint::CPoint(int _i,double _width,double _height)
 {
 	i = _i;
 
-	width = _width;
+	CPoint::width = _width;
 	height = _height;
 
 	frequency = 1;

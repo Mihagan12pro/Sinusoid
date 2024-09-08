@@ -13,6 +13,13 @@
 #include "SinusoidDoc.h"
 #include "SinusoidView.h"
 
+
+
+
+
+
+
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -51,12 +58,52 @@ BOOL CSinusoidView::PreCreateWindow(CREATESTRUCT& cs)
 
 // Рисование CSinusoidView
 
-void CSinusoidView::OnDraw(CDC* /*pDC*/)
+void CSinusoidView::OnDraw(CDC* pDC)
 {
 	CSinusoidDoc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
 	if (!pDoc)
 		return;
+
+	CRect rc;
+	GetClientRect(&rc);
+
+	pDC->MoveTo(0, rc.Height() / 2);
+	pDC->LineTo(rc.Width(), rc.Height() / 2);
+
+	pDC->MoveTo(0, rc.Height());
+
+	const int points_count = 40;
+
+	for (int i = 0;i < points_count;i++)
+	{
+		Point point(i, rc.Width(), rc.Height(), points_count);
+
+
+		if (i == 0)
+		{
+			pDC->MoveTo(i * (rc.Width() / (point.points_count - 1)),point.Y());
+		}
+		else
+		{
+			pDC->LineTo(i * (rc.Width() / (point.points_count - 1)), point.Y());
+		}
+	}
+
+	//Point p();
+	//for (int i = 0; i < *&p.points_count; i++)
+	//{
+	//	// Вычисляем x в диапазоне от 0 до 4π (или больше, если нужно)
+	//	double x = (2 * pi * i) / (num_points - 1);
+
+	//	double y = centerY + amplitude * sin(frequency * x);
+
+
+	//	if (i == 0)
+	//		pDC->MoveTo(i * (rc.Width() / (num_points - 1)), y);
+	//	else
+	//		pDC->LineTo(i * (rc.Width() / (num_points - 1)), y);
+	//}
 
 	// TODO: добавьте здесь код отрисовки для собственных данных
 }
