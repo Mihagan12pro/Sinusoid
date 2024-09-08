@@ -2,50 +2,45 @@
 // SinusoidDoc.h: интерфейс класса CSinusoidDoc 
 //
 
+#include"defines.h"
 
 #pragma once
+#define Point CPoint2D
+#define SinisoidFunction CSinusoidFunction
 
-class Point
+class CPoint2D
 {
 private:
-
-
-	double width, height;
-	double centerY;
-
-	double amplitude, frequency;
-
-	int i;
-
+	int amplitude;//Высота "волны", она же амплитуда
+	int width;//Ширина "волны" синусоиды. Тем меньше, тем шире
+	int vecrticalCenter;
+	int screenWidth;
+	int x;
+	const double PI = 3.14;
+	
 public:
-	 int points_count = 40;
-	const double pi = 3.14159265358979323846;
-
-	double X()
+	CPoint2D(int _x, int _amp, int _width, int _vecrtCent,int _scrWdth)
 	{
-		return (2 * pi * i) / (points_count - 1);
-	}
-	double Y()
-	{
-		return centerY + amplitude * sin(frequency * X());
-	}
-
-	Point(int _i, double _width, double _height,int _points_count)
-	{
-		i = _i;
-
+		x = _x;
+		amplitude = _amp;
 		width = _width;
-		height = _height;
-
-		frequency = 1;
-
-		amplitude = height / 2;
-		centerY = height / 2;
-		points_count = _points_count;
-
+		vecrticalCenter = _vecrtCent;
+		screenWidth = _scrWdth;
 	}
 
+	int X()
+	{
+		return x;
+	}
 
+	int Y()
+	{
+		return vecrticalCenter + static_cast<int>(amplitude * sin(width * 2 * PI * x / screenWidth));
+	}
+};
+
+class CSinusoidFunction
+{
 
 };
 

@@ -57,7 +57,7 @@ void CSinusoidDoc::Serialize(CArchive& ar)
 {
 	if (ar.IsStoring())
 	{
-		// TODO: добавьте код сохранения
+		// TODO: добавьте код сохранения		
 	}
 	else
 	{
