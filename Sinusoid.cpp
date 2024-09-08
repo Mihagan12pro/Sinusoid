@@ -12,6 +12,9 @@
 #include "SinusoidDoc.h"
 #include "SinusoidView.h"
 
+#include<vector>
+using namespace std;
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -128,6 +131,12 @@ BOOL CSinusoidApp::InitInstance()
 	// Одно и только одно окно было инициализировано, поэтому отобразите и обновите его
 	m_pMainWnd->ShowWindow(SW_SHOW);
 	m_pMainWnd->UpdateWindow();
+
+	
+
+	
+	
+
 	return TRUE;
 }
 

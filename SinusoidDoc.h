@@ -6,7 +6,7 @@
 
 #pragma once
 #define Point CPoint2D
-#define SinisoidFunction CSinusoidFunction
+#define SinusoidFunction CSinusoidFunction
 
 class CPoint2D
 {
@@ -58,6 +58,7 @@ protected: // создать только из сериализации
 
 // Атрибуты
 public:
+	//static SinusoidFunction *sinusoida ;
 
 // Операции
 public:

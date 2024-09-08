@@ -13,6 +13,7 @@
 #include "SinusoidDoc.h"
 #include "SinusoidView.h"
 
+#include<vector>
 
 
 
@@ -61,6 +62,9 @@ BOOL CSinusoidView::PreCreateWindow(CREATESTRUCT& cs)
 void CSinusoidView::OnDraw(CDC* pDC)
 {
 	CPaintDC dc(this);
+
+	std::vector<Point> points;
+
 	CSinusoidDoc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
 	if (!pDoc)
@@ -72,7 +76,21 @@ void CSinusoidView::OnDraw(CDC* pDC)
 	pDC->MoveTo(0, rc.Height() / 2);
 	pDC->LineTo(rc.Width(), rc.Height() / 2);
 
-	
+	for (int x = 0; x < rc.Width();x++)
+	{
+		Point point(x,rc.Height()/2,1,rc.Height()/2,rc.Width());
+
+		points.push_back(point);
+	}
+
+	for (int i = 0; i < points.size();i++)
+	{
+		if (i == 0)
+			pDC->MoveTo(points[i].X(), points[i].Y());
+		else
+			pDC->LineTo(points[i].X(), points[i].Y());
+
+	}
 }
 
 
