@@ -63,7 +63,7 @@ void CSinusoidView::OnDraw(CDC* pDC)
 {
 	//CPaintDC dc(this);
 
-	std::vector<Point> points;
+	
 
 	CSinusoidDoc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);

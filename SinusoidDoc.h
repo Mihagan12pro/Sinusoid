@@ -5,45 +5,6 @@
 #include"defines.h"
 
 #pragma once
-#define Point CPoint2D
-#define SinusoidFunction CSinusoidFunction
-
-class CPoint2D
-{
-private:
-	int amplitude;//Высота "волны", она же амплитуда
-	int width;//Ширина "волны" синусоиды. Тем меньше, тем шире
-	int vecrticalCenter;
-	int screenWidth;
-	int x;
-	const double PI = 3.14;
-	
-public:
-	CPoint2D(int _x, int _amp, int _width, int _vecrtCent,int _scrWdth)
-	{
-		x = _x;
-		amplitude = _amp;
-		width = _width;
-		vecrticalCenter = _vecrtCent;
-		screenWidth = _scrWdth;
-	}
-
-	int X()
-	{
-		return x;
-	}
-
-	int Y()
-	{
-		return vecrticalCenter + static_cast<int>(amplitude * sin(width * 2 * PI * x / screenWidth));
-	}
-};
-
-class CSinusoidFunction
-{
-
-};
-
 
 
 
