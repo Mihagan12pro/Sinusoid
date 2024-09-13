@@ -61,7 +61,7 @@ BOOL CSinusoidView::PreCreateWindow(CREATESTRUCT& cs)
 
 void CSinusoidView::OnDraw(CDC* pDC)
 {
-	CPaintDC dc(this);
+	//CPaintDC dc(this);
 
 	std::vector<Point> points;
 
@@ -76,7 +76,21 @@ void CSinusoidView::OnDraw(CDC* pDC)
 	pDC->MoveTo(0, rc.Height() / 2);
 	pDC->LineTo(rc.Width(), rc.Height() / 2);
 
+	pDC->MoveTo(0, rc.Height() / 2);
+
+	double mx = 2 * 3.14 / rc.Width();
+	double my = 2.f / rc.Height();
+
 	for (int x = 0; x < rc.Width();x++)
+	{
+		double X_rad = x * mx;
+		int y = rc.Height() / 2 + sin(X_rad)/my;
+
+		pDC->LineTo(x, y);
+	}
+
+
+	/*for (int x = 0; x < rc.Width();x++)
 	{
 		Point point(x,rc.Height()/2,1,rc.Height()/2,rc.Width());
 
@@ -90,7 +104,7 @@ void CSinusoidView::OnDraw(CDC* pDC)
 		else
 			pDC->LineTo(points[i].X(), points[i].Y());
 
-	}
+	}*/
 }
 
 
