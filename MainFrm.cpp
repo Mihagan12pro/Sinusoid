@@ -7,7 +7,7 @@
 #include "Sinusoid.h"
 #include"SinusoidView.h"
 #include "MainFrm.h"
-
+#include"CControlTreeView.h"
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -102,7 +102,7 @@ BOOL CMainFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 
 	m_wndSplitter.CreateStatic(this, 1, 2);
 
-	m_wndSplitter.CreateView(0, 0, RUNTIME_CLASS(CSinusoidView), CSize(400, 0), pContext);
+	m_wndSplitter.CreateView(0, 0, RUNTIME_CLASS(CControlTreeView), CSize(400, 0), pContext);
 	m_wndSplitter.CreateView(0, 1, RUNTIME_CLASS(CSinusoidView), CSize(0, 0), pContext);
 
 

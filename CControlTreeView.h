@@ -3,7 +3,8 @@
 
 // Просмотр CControlTreeView
 
-class CControlTreeView : public CTreeView
+class CControlTreeView
+	: public CTreeView
 {
 	DECLARE_DYNCREATE(CControlTreeView)
 
@@ -12,6 +13,8 @@ protected:
 	virtual ~CControlTreeView();
 
 public:
+	void FillTree();
+	HTREEITEM  m_hCoord, m_hSinus, m_hHatch;
 #ifdef _DEBUG
 	virtual void AssertValid() const;
 #ifndef _WIN32_WCE

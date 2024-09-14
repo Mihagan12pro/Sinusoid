@@ -19,6 +19,10 @@ CControlTreeView::~CControlTreeView()
 {
 }
 
+void CControlTreeView::FillTree()
+{
+}
+
 BEGIN_MESSAGE_MAP(CControlTreeView, CTreeView)
 END_MESSAGE_MAP()
 
