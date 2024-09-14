@@ -94,3 +94,11 @@ void CMainFrame::Dump(CDumpContext& dc) const
 
 // Обработчики сообщений CMainFrame
 
+
+
+BOOL CMainFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
+{
+	// TODO: добавьте специализированный код или вызов базового класса
+
+	return CFrameWnd::OnCreateClient(lpcs, pContext);
+}
