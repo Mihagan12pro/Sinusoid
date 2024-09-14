@@ -73,38 +73,36 @@ void CSinusoidView::OnDraw(CDC* pDC)
 	CRect rc;
 	GetClientRect(&rc);
 
-	pDC->MoveTo(0, rc.Height() / 2);
-	pDC->LineTo(rc.Width(), rc.Height() / 2);
-
-	pDC->MoveTo(0, rc.Height() / 2);
-
-	double mx = 2 * 3.14 / rc.Width();
-	double my = 2.f / rc.Height();
-
-	for (int x = 0; x < rc.Width();x++)
+	if (pDoc->m_bCoord)
 	{
-		double X_rad = x * mx;
-		int y = rc.Height() / 2 + sin(X_rad)/my;
+		pDC->MoveTo(0, rc.Height() / 2);
+		pDC->LineTo(rc.Width(), rc.Height() / 2);
 
-		pDC->LineTo(x, y);
+		pDC->MoveTo(0, rc.Height() / 2);
 	}
 
-
-	/*for (int x = 0; x < rc.Width();x++)
+	if (pDoc->m_bSinus)
 	{
-		Point point(x,rc.Height()/2,1,rc.Height()/2,rc.Width());
+		pDC->MoveTo(0, rc.Height() / 2);
+		double mx = 2 * 3.14 / rc.Width();
+		double my = 2.f / rc.Height();
 
-		points.push_back(point);
+		for (int x = 0; x < rc.Width();x++)
+		{
+			double X_rad = x * mx;
+			int y = rc.Height() / 2 + sin(X_rad) / my;
+
+			pDC->LineTo(x, y);
+		}
 	}
-
-	for (int i = 0; i < points.size();i++)
+	if (pDoc->m_bHatch)
 	{
-		if (i == 0)
-			pDC->MoveTo(points[i].X(), points[i].Y());
-		else
-			pDC->LineTo(points[i].X(), points[i].Y());
+		MessageBox(L"Coming soon!");
+	}
+	
 
-	}*/
+
+	
 }
 
 
