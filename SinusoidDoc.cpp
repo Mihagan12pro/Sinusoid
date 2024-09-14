@@ -7,7 +7,9 @@
 // и поиска; позволяет совместно использовать код документа в данным проекте.
 #ifndef SHARED_HANDLERS
 #include "Sinusoid.h"
+#include"MainFrm.h"
 #endif
+#include"CControlTreeView.h"
 
 #include "SinusoidDoc.h"
 
@@ -44,6 +46,20 @@ BOOL CSinusoidDoc::OnNewDocument()
 
 	// TODO: добавьте код повторной инициализации
 	// (Документы SDI будут повторно использовать этот документ)
+	CWnd* MainWnd = AfxGetMainWnd();
+
+	if (MainWnd)
+	{
+
+		m_pTreeView = (CControlTreeView*)((CMainFrame*)MainWnd)->m_wndSplitter.GetPane(0, 0);
+
+		m_pTreeView->m_pDoc = this;
+		m_pView = (CSinusoidView*)((CMainFrame*)MainWnd)->m_wndSplitter.GetPane(0, 1);
+
+	}
+
+	m_pTreeView->FillTree();
+
 
 	return TRUE;
 }

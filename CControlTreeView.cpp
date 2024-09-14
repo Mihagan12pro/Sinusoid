@@ -4,7 +4,7 @@
 #include "pch.h"
 #include "Sinusoid.h"
 #include "CControlTreeView.h"
-
+#include"SinusoidDoc.h"
 
 // CControlTreeView
 
@@ -21,6 +21,21 @@ CControlTreeView::~CControlTreeView()
 
 void CControlTreeView::FillTree()
 {
+	//CControlTreeView& tree = GetTreeCtrl();
+
+	//tree.DeleteAllItems();
+
+	//m_hCoord = tree.InsertItem(L"Система координат", -1, -1, NULL, TVI_ROOT);
+	//m_hSinus = tree.InsertItem(L"Синус", -1, -1, NULL, TVI_ROOT);
+	//m_hHatch = tree.InsertItem(L"Штриховка", -1, -1, NULL, TVI_ROOT);
+
+	CTreeCtrl& tree = GetTreeCtrl();
+
+	tree.DeleteAllItems();
+
+	m_hCoord = tree.InsertItem(L"Система координат", -1, -1, NULL, TVI_ROOT);
+	m_hSinus = tree.InsertItem(L"Синус", -1, -1, NULL, TVI_ROOT);
+	m_hHatch = tree.InsertItem(L"Штриховка", -1, -1, NULL, TVI_ROOT);
 }
 
 BEGIN_MESSAGE_MAP(CControlTreeView, CTreeView)

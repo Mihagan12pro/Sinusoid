@@ -8,8 +8,9 @@
 
 
 
-
-
+class CSinusoidView;
+class CMainFrm;
+class CControlTreeView;
 
 class CSinusoidDoc : public CDocument
 {
@@ -20,7 +21,8 @@ protected: // создать только из сериализации
 // Атрибуты
 public:
 	//static SinusoidFunction *sinusoida ;
-
+	CControlTreeView* m_pTreeView;
+	CSinusoidView *m_pView;
 // Операции
 public:
 

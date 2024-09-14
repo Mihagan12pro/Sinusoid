@@ -6,6 +6,7 @@
 #include "framework.h"
 #include "Sinusoid.h"
 #include"SinusoidView.h"
+#include"SinusoidDoc.h"
 #include "MainFrm.h"
 #include"CControlTreeView.h"
 #ifdef _DEBUG
@@ -104,6 +105,15 @@ BOOL CMainFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 
 	m_wndSplitter.CreateView(0, 0, RUNTIME_CLASS(CControlTreeView), CSize(400, 0), pContext);
 	m_wndSplitter.CreateView(0, 1, RUNTIME_CLASS(CSinusoidView), CSize(0, 0), pContext);
+
+	SetActiveView((CView*)m_wndSplitter.GetPane(0, 1));
+
+	CSinusoidDoc* pDoc = (CSinusoidDoc*)GetActiveDocument();
+
+	pDoc->m_pTreeView = (CControlTreeView*)m_wndSplitter.GetPane(0, 0);
+	pDoc->m_pView = (CSinusoidView*)m_wndSplitter.GetPane(0, 1);
+
+	pDoc->m_pTreeView->m_pDoc = pDoc;
 
 
 	return TRUE;

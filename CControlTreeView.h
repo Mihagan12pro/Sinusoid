@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include"afxcview.h"
-
+class CSinusoidDoc;
 // Просмотр CControlTreeView
 
 class CControlTreeView
@@ -13,6 +13,9 @@ protected:
 	virtual ~CControlTreeView();
 
 public:
+	CSinusoidDoc* m_pDoc;
+
+
 	void FillTree();
 	HTREEITEM  m_hCoord, m_hSinus, m_hHatch;
 #ifdef _DEBUG

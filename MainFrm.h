@@ -19,10 +19,13 @@ public:
 
 // Переопределение
 public:
+
+	
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 
 // Реализация
 public:
+	CSplitterWnd      m_wndSplitter;
 	virtual ~CMainFrame();
 #ifdef _DEBUG
 	virtual void AssertValid() const;
@@ -32,7 +35,8 @@ public:
 protected:  // встроенные члены панели элементов управления
 	CToolBar          m_wndToolBar;
 	CStatusBar        m_wndStatusBar;
-	CSplitterWnd      m_wndSplitter;
+	
+	
 
 // Созданные функции схемы сообщений
 protected:
