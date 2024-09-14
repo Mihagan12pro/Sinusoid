@@ -38,6 +38,7 @@ public:
 // Реализация
 public:
 	virtual ~CSinusoidDoc();
+	bool m_bCoord, m_bSinus, m_bHatch;
 #ifdef _DEBUG
 	virtual void AssertValid() const;
 	virtual void Dump(CDumpContext& dc) const;

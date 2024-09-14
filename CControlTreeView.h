@@ -14,10 +14,10 @@ protected:
 
 public:
 	CSinusoidDoc* m_pDoc;
-
+	
 
 	void FillTree();
-	HTREEITEM  m_hCoord, m_hSinus, m_hHatch;
+	HTREEITEM  m_hCoord, m_hSinus, m_hHatch, m_hMain;
 #ifdef _DEBUG
 	virtual void AssertValid() const;
 #ifndef _WIN32_WCE

@@ -32,10 +32,11 @@ void CControlTreeView::FillTree()
 	CTreeCtrl& tree = GetTreeCtrl();
 
 	tree.DeleteAllItems();
+	m_hMain = tree.InsertItem(L"Дерево построений", -1, -1, NULL, TVI_FIRST);
 
-	m_hCoord = tree.InsertItem(L"Система координат", -1, -1, NULL, TVI_FIRST);
-	m_hSinus = tree.InsertItem(L"Синус", -1, -1, NULL, TVI_FIRST);
-	m_hHatch = tree.InsertItem(L"Штриховка", -1, -1, NULL, TVI_FIRST);
+	m_hCoord = tree.InsertItem(L"Система координат", -1, -1, m_hMain, TVI_FIRST);
+	m_hSinus = tree.InsertItem(L"Синус", -1, -1, m_hMain, TVI_FIRST);
+	m_hHatch = tree.InsertItem(L"Штриховка", -1, -1, m_hMain, TVI_FIRST);
 
 	tree.Expand(m_hSinus, TVE_EXPAND);
 }
