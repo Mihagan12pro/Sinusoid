@@ -74,6 +74,9 @@ void CSinusoidView::OnDraw(CDC* pDC)
 	GetClientRect(&rc);
 	CPen* pOld;
 
+	double mx = 2 * 3.14 / rc.Width();
+	double my = 2.f / rc.Height();
+
 	if (pDoc->m_bCoord)
 	{
 		pDC->MoveTo(0, rc.Height() / 2);
@@ -88,9 +91,8 @@ void CSinusoidView::OnDraw(CDC* pDC)
 
 		 pOld = pDC->SelectObject(&pen);
 
-		pDC->MoveTo(0, rc.Height() / 2);
-		double mx = 2 * 3.14 / rc.Width();
-		double my = 2.f / rc.Height();
+		//pDC->MoveTo(0, rc.Height() / 2);
+		
 
 		for (int x = 0; x < rc.Width();x++)
 		{
@@ -105,7 +107,19 @@ void CSinusoidView::OnDraw(CDC* pDC)
 	}
 	if (pDoc->m_bHatch)
 	{
-		MessageBox(L"Coming soon!");
+		for (int x = 0; x < rc.Width()/2;x++)
+		{
+			double X_rad = x * mx;
+			int y = rc.Height() / 2 + sin(X_rad) / my;
+			
+			if (x % 6 == 0)
+			{
+				pDC->MoveTo(x, y);
+				pDC->LineTo(x,rc.Height()/2);
+			}
+			//pDC->LineTo(x, y);
+		}
+
 	}
 	
 
