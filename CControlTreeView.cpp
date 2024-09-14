@@ -5,6 +5,7 @@
 #include "Sinusoid.h"
 #include "CControlTreeView.h"
 #include"SinusoidDoc.h"
+#include"SinusoidView.h"
 
 // CControlTreeView
 
@@ -43,6 +44,7 @@ void CControlTreeView::FillTree()
 
 BEGIN_MESSAGE_MAP(CControlTreeView, CTreeView)
 	ON_WM_CREATE()
+	ON_WM_LBUTTONDOWN()
 END_MESSAGE_MAP()
 
 
@@ -75,4 +77,51 @@ int CControlTreeView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	// TODO:  Добавьте специализированный код создания
 
 	return 0;
+}
+
+
+void CControlTreeView::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	// TODO: добавьте свой код обработчика сообщений или вызов стандартного
+
+	//CTreeView::OnLButtonDown(nFlags, point);
+
+	CTreeCtrl& tree = GetTreeCtrl();
+	CTreeView::OnLButtonDown(nFlags, point);
+
+	CRect rc;
+	tree.GetItemRect( m_hCoord, &rc, false);
+
+	if (rc.PtInRect(point))
+		tree.SelectItem(m_hCoord);
+	tree.GetItemRect(m_hCoord, &rc, false);
+
+	if (rc.PtInRect(point))
+		tree.SelectItem(m_hSinus);
+	tree.GetItemRect(m_hSinus, &rc, false);
+
+	if (rc.PtInRect(point))
+		tree.SelectItem(m_hHatch);
+	tree.GetItemRect(m_hHatch, &rc, false);
+
+
+
+
+	if (tree.GetSelectedItem() == m_hMain)
+	{
+		bool check = tree.GetCheck(m_hMain);
+		tree.SetCheck(m_hCoord, check);
+		tree.SetCheck(m_hSinus, check);
+		tree.SetCheck(m_hHatch, check);
+
+	}
+	else
+		tree.SetCheck(m_hMain, false);
+
+	m_pDoc->m_bCoord = tree.GetCheck(m_hCoord);
+	m_pDoc->m_bSinus = tree.GetCheck(m_hSinus);
+	m_pDoc->m_bHatch = tree.GetCheck(m_hHatch);
+
+	m_pDoc->m_pView->Invalidate();
+
 }
