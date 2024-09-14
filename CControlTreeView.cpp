@@ -33,12 +33,15 @@ void CControlTreeView::FillTree()
 
 	tree.DeleteAllItems();
 
-	m_hCoord = tree.InsertItem(L"Система координат", -1, -1, NULL, TVI_ROOT);
-	m_hSinus = tree.InsertItem(L"Синус", -1, -1, NULL, TVI_ROOT);
-	m_hHatch = tree.InsertItem(L"Штриховка", -1, -1, NULL, TVI_ROOT);
+	m_hCoord = tree.InsertItem(L"Система координат", -1, -1, NULL, TVI_FIRST);
+	m_hSinus = tree.InsertItem(L"Синус", -1, -1, NULL, TVI_FIRST);
+	m_hHatch = tree.InsertItem(L"Штриховка", -1, -1, NULL, TVI_FIRST);
+
+	tree.Expand(m_hSinus, TVE_EXPAND);
 }
 
 BEGIN_MESSAGE_MAP(CControlTreeView, CTreeView)
+	ON_WM_CREATE()
 END_MESSAGE_MAP()
 
 
@@ -60,3 +63,15 @@ void CControlTreeView::Dump(CDumpContext& dc) const
 
 
 // Обработчики сообщений CControlTreeView
+
+
+int CControlTreeView::OnCreate(LPCREATESTRUCT lpCreateStruct)
+{
+	lpCreateStruct->style |= TVS_HASLINES | TVS_HASBUTTONS | TVS_LINESATROOT | TVS_SHOWSELALWAYS | TVS_CHECKBOXES;
+	if (CTreeView::OnCreate(lpCreateStruct) == -1)
+		return -1;
+
+	// TODO:  Добавьте специализированный код создания
+
+	return 0;
+}
