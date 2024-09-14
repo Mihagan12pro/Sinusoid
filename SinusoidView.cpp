@@ -72,6 +72,7 @@ void CSinusoidView::OnDraw(CDC* pDC)
 
 	CRect rc;
 	GetClientRect(&rc);
+	CPen* pOld;
 
 	if (pDoc->m_bCoord)
 	{
@@ -83,6 +84,10 @@ void CSinusoidView::OnDraw(CDC* pDC)
 
 	if (pDoc->m_bSinus)
 	{
+		CPen pen(PS_SOLID, 1, RGB(255, 0, 0));
+
+		 pOld = pDC->SelectObject(&pen);
+
 		pDC->MoveTo(0, rc.Height() / 2);
 		double mx = 2 * 3.14 / rc.Width();
 		double my = 2.f / rc.Height();
@@ -94,6 +99,9 @@ void CSinusoidView::OnDraw(CDC* pDC)
 
 			pDC->LineTo(x, y);
 		}
+		pDC->SelectObject(pOld);
+
+		
 	}
 	if (pDoc->m_bHatch)
 	{
