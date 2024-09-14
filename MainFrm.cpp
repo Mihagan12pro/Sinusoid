@@ -5,7 +5,7 @@
 #include "pch.h"
 #include "framework.h"
 #include "Sinusoid.h"
-
+#include"SinusoidView.h"
 #include "MainFrm.h"
 
 #ifdef _DEBUG
@@ -100,5 +100,12 @@ BOOL CMainFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 {
 	// TODO: добавьте специализированный код или вызов базового класса
 
-	return CFrameWnd::OnCreateClient(lpcs, pContext);
+	m_wndSplitter.CreateStatic(this, 1, 2);
+
+	m_wndSplitter.CreateView(0, 0, RUNTIME_CLASS(CSinusoidView), CSize(400, 0), pContext);
+	m_wndSplitter.CreateView(0, 1, RUNTIME_CLASS(CSinusoidView), CSize(0, 0), pContext);
+
+
+	return TRUE;
+
 }

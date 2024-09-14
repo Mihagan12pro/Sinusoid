@@ -32,6 +32,7 @@ public:
 protected:  // встроенные члены панели элементов управления
 	CToolBar          m_wndToolBar;
 	CStatusBar        m_wndStatusBar;
+	CSplitterWnd      m_wndSplitter;
 
 // Созданные функции схемы сообщений
 protected:

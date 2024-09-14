@@ -3,7 +3,7 @@
 //
 
 #pragma once
-
+class CSinusoidDoc;
 
 class CSinusoidView : public CView
 {
