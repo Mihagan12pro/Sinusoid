@@ -107,7 +107,7 @@ void CSinusoidView::OnDraw(CDC* pDC)
 	}
 	if (pDoc->m_bHatch)
 	{
-		for (int x = 0; x < rc.Width()/2;x++)
+		for (int x = 0; x < rc.Width();x++)
 		{
 			double X_rad = x * mx;
 			int y = rc.Height() / 2 + sin(X_rad) / my;
@@ -132,13 +132,15 @@ void CSinusoidView::OnDraw(CDC* pDC)
 		{
 			if (x <= rc.Width() - 10)
 			{
-				
-				int x2 = x + 10;
+				int x2 = x + 1;
 				double X_rad = x2 * mx;
 				int y = rc.Height() / 2 + sin(X_rad) / my;
-
-				pDC->MoveTo(x, rc.Height() / 2);
-				pDC->LineTo(x2,y);
+				if (x2 == y)
+				{
+					pDC->MoveTo(x2, rc.Height() / 2);
+					pDC->LineTo(x, y);
+				
+				}
 			}
 
 			/*if (!first)
