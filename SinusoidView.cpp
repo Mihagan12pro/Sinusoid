@@ -112,7 +112,7 @@ void CSinusoidView::OnDraw(CDC* pDC)
 			double X_rad = x * mx;
 			int y = rc.Height() / 2 + sin(X_rad) / my;
 			
-			if (x % 6 == 0)
+			if (x % 20 == 0)
 			{
 				pDC->MoveTo(x, y);
 				pDC->LineTo(x,rc.Height()/2);
@@ -123,48 +123,38 @@ void CSinusoidView::OnDraw(CDC* pDC)
 	}
 	if (pDoc->m_bHatch45)
 	{
-		double oldX = 0;
+		
 
 		bool first = true;
+		int oldX;
 
 		pDC->MoveTo(rc.Width()/2, rc.Height() / 2);
-		for (int x = rc.Width()/2; x < rc.Width() ;x+=10)
+		for (int x = 0; x < rc.Width();x++)
 		{
-			if (x <= rc.Width() - 10)
-			{
-				int x2 = x + 1;
-				double X_rad = x2 * mx;
-				int y = rc.Height() / 2 + sin(X_rad) / my;
-				if (x2 == y)
-				{
-					pDC->MoveTo(x2, rc.Height() / 2);
-					pDC->LineTo(x, y);
-				
-				}
-			}
+			double X_rad = x * mx;
+			int y = rc.Height() / 2 + sin(X_rad) / my;
 
-			/*if (!first)
-			{
-				double X_rad = x * mx;
-				int y = rc.Height() / 2 + sin(X_rad) / my;
-
+			
 				if (x % 40 == 0)
 				{
-					
-					pDC->MoveTo(x, y);
-					pDC->MoveTo(oldX, rc.Height() / 2);
-					pDC->LineTo(x,y);
-					pDC->MoveTo(x,y);
-
-					oldX = x;
-					
+					/*pDC->MoveTo(x, y);
+					pDC->LineTo(x, rc.Height() / 2);*/
+					if (!first)
+					{
+						pDC->MoveTo(oldX, rc.Height() / 2);
+						pDC->LineTo(x, y);
+						
+						
+						oldX = x;
+					}
+					else
+					{
+						first = false;
+						oldX = x;
+					}
 				}
-			}
-			else
-			{
-				oldX = x;
-				first = false;
-			}*/
+			
+		
 			//pDC->LineTo(x, y);
 		}
 		

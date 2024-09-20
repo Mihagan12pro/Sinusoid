@@ -43,6 +43,7 @@ void CControlTreeView::FillTree()
 	tree.Expand(m_hSinus, TVE_EXPAND);
 }
 
+
 BEGIN_MESSAGE_MAP(CControlTreeView, CTreeView)
 	ON_WM_CREATE()
 	ON_WM_LBUTTONDOWN()
