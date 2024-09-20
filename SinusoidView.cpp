@@ -121,6 +121,41 @@ void CSinusoidView::OnDraw(CDC* pDC)
 		}
 
 	}
+	if (pDoc->m_bHatch45)
+	{
+		double oldX = 0;
+
+		bool first = true;
+
+		pDC->MoveTo(rc.Width()/2, rc.Height() / 2);
+		for (int x = rc.Width()/2; x < rc.Width() ;x++)
+		{
+			if (!first)
+			{
+				double X_rad = x * mx;
+				int y = rc.Height() / 2 + sin(X_rad) / my;
+
+				if (x % 40 == 0)
+				{
+					
+					pDC->MoveTo(x, y);
+					pDC->MoveTo(oldX, rc.Height() / 2);
+					pDC->LineTo(x,y);
+					pDC->MoveTo(x,y);
+
+					oldX = x;
+					
+				}
+			}
+			else
+			{
+				oldX = x;
+				first = false;
+			}
+			//pDC->LineTo(x, y);
+		}
+		
+	}
 	
 
 
