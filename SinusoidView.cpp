@@ -128,9 +128,20 @@ void CSinusoidView::OnDraw(CDC* pDC)
 		bool first = true;
 
 		pDC->MoveTo(rc.Width()/2, rc.Height() / 2);
-		for (int x = rc.Width()/2; x < rc.Width() ;x++)
+		for (int x = rc.Width()/2; x < rc.Width() ;x+=10)
 		{
-			if (!first)
+			if (x <= rc.Width() - 10)
+			{
+				
+				int x2 = x + 10;
+				double X_rad = x2 * mx;
+				int y = rc.Height() / 2 + sin(X_rad) / my;
+
+				pDC->MoveTo(x, rc.Height() / 2);
+				pDC->LineTo(x2,y);
+			}
+
+			/*if (!first)
 			{
 				double X_rad = x * mx;
 				int y = rc.Height() / 2 + sin(X_rad) / my;
@@ -151,7 +162,7 @@ void CSinusoidView::OnDraw(CDC* pDC)
 			{
 				oldX = x;
 				first = false;
-			}
+			}*/
 			//pDC->LineTo(x, y);
 		}
 		
