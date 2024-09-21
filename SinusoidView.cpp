@@ -108,24 +108,33 @@ void CSinusoidView::OnDraw(CDC* pDC)
 	}
 	if (pDoc->m_bHatch)
 	{
-		for (int x = 0; x < rc.Width()/2;x++)
+		for (int x = 0; x < rc.Width();x++)
 		{
 			double X_rad = x * mx;
 			int y = rc.Height() / 2 + sin(-X_rad) / my;
-			CPen pen(PS_SOLID, 1, RGB(0, 255, 0));
-
-			pOld = pDC->SelectObject(&pen);
-			if (x % 20 == 0)
+		
+			if (x < rc.Width() / 2)
 			{
-			/*{
-				pDC->MoveTo(x, y);
-				pDC->LineTo(x,rc.Height()/2);*/
+				if (x % 40 == 0 && x * 2 < rc.Width() / 2)
+				{
+					
+					CPen pen(PS_SOLID, 1, RGB(0, 255, 0));
 
-				pDC->MoveTo(x, y);
-				pDC->LineTo(0, y);
+					pOld = pDC->SelectObject(&pen);
+
+					pDC->MoveTo(x, y);
+					
+					pDC->LineTo(x * 2, rc.Height() / 2);
+					pDC->SelectObject(pOld);
+					pOld = pDC->SelectObject(&pen);
+
+
+					
+
+				}
+				
 			}
-			//pDC->LineTo(x, y);
-			pDC->SelectObject(pOld);
+			
 		}
 
 	}
