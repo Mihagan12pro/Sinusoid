@@ -15,8 +15,8 @@
 
 #include<vector>
 
-
-
+#include<vector>
+using namespace std;
 
 
 
@@ -59,6 +59,7 @@ BOOL CSinusoidView::PreCreateWindow(CREATESTRUCT& cs)
 
 // Рисование CSinusoidView
 
+
 void CSinusoidView::OnDraw(CDC* pDC)
 {
 	//CPaintDC dc(this);
@@ -97,7 +98,7 @@ void CSinusoidView::OnDraw(CDC* pDC)
 		for (int x = 0; x < rc.Width();x++)
 		{
 			double X_rad = x * mx;
-			int y = rc.Height() / 2 + sin(X_rad) / my;
+			int y = rc.Height() / 2 + sin(-X_rad) / my;
 
 			pDC->LineTo(x, y);
 		}
@@ -107,59 +108,31 @@ void CSinusoidView::OnDraw(CDC* pDC)
 	}
 	if (pDoc->m_bHatch)
 	{
-		for (int x = 0; x < rc.Width();x++)
+		for (int x = 0; x < rc.Width()/2;x++)
 		{
 			double X_rad = x * mx;
-			int y = rc.Height() / 2 + sin(X_rad) / my;
-			
+			int y = rc.Height() / 2 + sin(-X_rad) / my;
+			CPen pen(PS_SOLID, 1, RGB(0, 255, 0));
+
+			pOld = pDC->SelectObject(&pen);
 			if (x % 20 == 0)
 			{
+			/*{
 				pDC->MoveTo(x, y);
-				pDC->LineTo(x,rc.Height()/2);
+				pDC->LineTo(x,rc.Height()/2);*/
+
+				pDC->MoveTo(x, y);
+				pDC->LineTo(0, y);
 			}
 			//pDC->LineTo(x, y);
+			pDC->SelectObject(pOld);
 		}
 
 	}
 	if (pDoc->m_bHatch45)
 	{
-		
 
-		bool first = true;
-		int oldX;
-
-		pDC->MoveTo(rc.Width()/2, rc.Height() / 2);
-		for (int x = 0; x < rc.Width();x++)
-		{
-			double X_rad = x * mx;
-			int y = rc.Height() / 2 + sin(X_rad) / my;
-
-			
-				if (x % 40 == 0)
-				{
-					/*pDC->MoveTo(x, y);
-					pDC->LineTo(x, rc.Height() / 2);*/
-					if (!first)
-					{
-						pDC->MoveTo(oldX, rc.Height() / 2);
-						pDC->LineTo(x, y);
-						
-						
-						oldX = x;
-					}
-					else
-					{
-						first = false;
-						oldX = x;
-					}
-				}
-			
-		
-			//pDC->LineTo(x, y);
-		}
-		
 	}
-	
 
 
 	

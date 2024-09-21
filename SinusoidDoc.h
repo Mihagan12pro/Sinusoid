@@ -2,7 +2,7 @@
 // SinusoidDoc.h: интерфейс класса CSinusoidDoc 
 //
 
-#include"defines.h"
+
 
 #pragma once
 
