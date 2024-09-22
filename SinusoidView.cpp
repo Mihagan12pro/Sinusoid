@@ -60,16 +60,7 @@ BOOL CSinusoidView::PreCreateWindow(CREATESTRUCT& cs)
 // Рисование CSinusoidView
 
 
-double CSinusoidView::F(double x,double b)
-{
-	CRect rcLocal;
-	GetClientRect(&rcLocal);
-	double period = rcLocal.Width() / 2;
-	double amplitude = rcLocal.Height() / 2;
-	double frequency = 3.14 / period * x; // Частота
-	
-	return amplitude * sin(frequency) - (1 * x + b); // Разность между синусом и уравнением прямой
-}
+
 
 
 
@@ -111,7 +102,7 @@ void CSinusoidView::OnDraw(CDC* pDC)
 		for (int x = 0; x < rc.Width();x++)
 		{
 			double X_rad = x * mx;
-			int y = rc.Height() / 2 + sin(-X_rad) / my;
+			int y = rc.Height() / 2 + sin(X_rad) / my;
 
 			pDC->LineTo(x, y);
 		}
@@ -122,10 +113,11 @@ void CSinusoidView::OnDraw(CDC* pDC)
 	
 	if (pDoc->m_bHatch)
 	{
+
 		for (int x = 0; x < rc.Width();x++)
 		{
 			double X_rad = x * mx;
-			int y = rc.Height() / 2 + sin(-X_rad) / my;
+			int y = rc.Height() / 2 + sin(X_rad) / my;
 			/*CPen pen(PS_SOLID, 1, RGB(0, 255, 0));
 
 			pOld = pDC->SelectObject(&pen);*/
@@ -142,33 +134,55 @@ void CSinusoidView::OnDraw(CDC* pDC)
 	}
 	if (pDoc->m_bHatch45)
 	{
-		pDC->MoveTo(rc.Width()/2, rc.Height() / 2);
-
-		for (int x = rc.Width()/2; x < rc.Width();x++)
+		double halfX = rc.Width()/2;
+		double halfY = rc.Height() / 2;
+		double height = rc.Height();
+		
+		int step = 10;
+		for (int x = 0; x < rc.Width()/2; x++)
 		{
-			double infinum,  supremum;
-			if (x % 20 == 0)
+			pDC->MoveTo(x, halfY);
+			if (x % step == 0 )
 			{
-				double width = (double)rc.Width() / 2;
-				double b = x - rc.Width()/2; // Смещение прямой
-				//f(x) = kx + b, где k - тангенс угла наклона, b - смещение прямой
-				infinum  = -width;//начало интервала
-				supremum =  width;//конец интервала
+				double b = x - halfX; // Смещение прямой
 
-				
-				while (fabs(supremum - infinum) > eps)
-				{
-					infinum = supremum - (supremum - infinum) * F(supremum,b) / (F(
-						supremum,b) - F(infinum,b));
-					supremum = infinum - (infinum - supremum) * F(infinum,b) / (F(
-						infinum,b) - F(supremum,b));
-				}
+				double a = -1000.0; // Начало интервала
+				double b_val = 1000.0; // Конец интервала
 
-			
+				double root = bisection(a, b_val, 1, b, halfY, halfX);
+				double y = halfY * sin(PI / halfX * root);
 
-
+				double Y = height - halfY - y;
+				double X = halfX + root;
+				pDC->LineTo(X, Y);
 			}
 		}
+		//for (int x = rc.Width()/2; x < rc.Width();x++)
+		//{
+		//	pDC->MoveTo(0, rc.Height() / 2);
+		//	double infinum,  supremum;
+
+
+		//	double halfWidth = rc.Width()/2;
+		//	double halfHeight = rc.Height() / 2;
+		//	double height = rc.Height();
+
+		//	if (x % 20 == 0)
+		//	{
+		//		double b = x - halfWidth; // Смещение прямой
+
+		//		 infinum = -1000.0; // Начало интервала
+		//		supremum = 1000.0; // Конец интервала
+
+		//		double root = EquationSolver(infinum, supremum, 1, b, halfHeight, halfWidth);
+		//		double y = halfHeight * sin(PI / halfWidth * root);
+
+		//		double Y = height - halfHeight - y;
+		//		double X = halfWidth + root;
+		//		pDC->LineTo(X, Y);
+		//		
+		//	}
+		//}
 
 
 	}
@@ -176,8 +190,66 @@ void CSinusoidView::OnDraw(CDC* pDC)
 
 	
 }
+//
+//double CSinusoidView::EquationSolver(double a, double b, double m, double b_const, double amplitude, double period)
+//{
+//
+//
+//	double c;
+//	while ((b - a) >= 1e-6)
+//	{
+//		c = (a + b) / 2; // Средняя точка
+//		if (f(c, m, b_const, amplitude, period) == 0.0)
+//		{
+//			break; // c является корнем
+//		}
+//		else if (f(c, m, b_const, amplitude, period) * f(a, m, b_const, amplitude, period) < 0)
+//		{
+//			b = c; // Корень находится в левой части
+//		}
+//		else
+//		{
+//			a = c; // Корень находится в правой части
+//		}
+//	}
+//	return (a + b) / -2; // Возвращаем среднюю точку как приближенную к корню
+//}
+//double CSinusoidView::f(double x, double m, double b, double amplitude, double period)
+//{
+//	double frequency = PI / period * x; // Частота
+//	return amplitude * sin(frequency) - (1 * x + b); // Разность между синусом и уравнением прямой
+//}
 
 
+double CSinusoidView::f(double x, double m, double b, double amplitude, double period) {
+	double frequency = PI / period * x; // Частота
+	return amplitude * sin(frequency) - (1 * x + b); // Разность между синусом и уравнением прямой
+}
+
+
+// Метод бисекции
+double CSinusoidView::bisection(double a, double b, double m, double b_const, double amplitude, double period) {
+
+
+	double c;
+	while ((b - a) >= 1e-6)
+	{
+		c = (a + b) / 2; // Средняя точка
+		if (f(c, m, b_const, amplitude, period) == 0.0)
+		{
+			break; // c является корнем
+		}
+		else if (f(c, m, b_const, amplitude, period) * f(a, m, b_const, amplitude, period) < 0)
+		{
+			b = c; // Корень находится в левой части
+		}
+		else
+		{
+			a = c; // Корень находится в правой части
+		}
+	}
+	return (a + b) / -2; // Возвращаем среднюю точку как приближенную к корню
+}
 // Печать CSinusoidView
 
 BOOL CSinusoidView::OnPreparePrinting(CPrintInfo* pInfo)

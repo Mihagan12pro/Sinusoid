@@ -38,12 +38,12 @@ public:
 #endif
 
 protected:
-	const double eps = 0.00001;
+	const double eps = 1e-6;
+	const double PI = 3.14;
 
-	double F(double x,double b);
-
-	double EquationSolver(double inf,double supr);
-
+	double EquationSolver(double a, double b, double m, double b_const, double amplitude, double period);
+	double f(double x, double m, double b, double amplitude, double period);
+	double bisection(double a, double b, double m, double b_const, double amplitude, double period);
 // Созданные функции схемы сообщений
 protected:
 	DECLARE_MESSAGE_MAP()
