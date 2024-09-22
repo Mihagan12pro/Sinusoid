@@ -45,6 +45,7 @@ protected:
 	double f(double x,  double b, double amplitude, double period);
 	double EquationSolverByDichotomy(double a, double b,  double b_const, double amplitude, double period);
 // Созданные функции схемы сообщений
+	double SimpleIterations(double start, double end, double b_const, double amplitude, double period);
 protected:
 	DECLARE_MESSAGE_MAP()
 };

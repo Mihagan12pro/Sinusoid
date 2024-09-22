@@ -261,6 +261,41 @@ double CSinusoidView::EquationSolverByDichotomy(double start, double end,double 
 	}
 	return (start + end) / -2; // Возвращаем среднюю точку как приближенную к корню
 }
+
+double CSinusoidView::SimpleIterations(double start, double end, double b_const, double amplitude, double period)
+{
+	for (double x = start; x <= end; x += 0.1) //цикл грубого поиска
+	{
+		double a, b;
+		//признак того что на интервале есть корень
+		if (f(x,b_const,amplitude,period) * f(0.1+x,b_const, amplitude, period ) < 0)
+		{
+			 a = x; //левая граница интервала уточнения корня
+			 b = x + 0.1; //правая граница интервала уточнения корня
+			//цикл уточнения корня
+			while (fabs(b - a) > eps)
+			{
+				double c = (a + b) / 2.f; //середина очередного интервала
+				//признак нахождения корня в левом интервале
+				if (f(c, b_const, amplitude, period) * f(a,  b_const, amplitude, period) < 0)
+				{
+					b = c; //отбрасываем правый интервал
+				}
+				else
+
+					a = c; //отбрасываем левый интервал
+
+			}
+			return (a + b) /-2.f;
+			
+			//вывод сообщения о том что найден корень
+			//cout << "Найден корень " << (a + b) / 2.f << "\n";
+		}
+
+	}
+	return 0;
+
+}
 // Печать CSinusoidView
 
 BOOL CSinusoidView::OnPreparePrinting(CPrintInfo* pInfo)
