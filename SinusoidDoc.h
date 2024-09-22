@@ -37,6 +37,7 @@ public:
 
 // Реализация
 public:
+
 	virtual ~CSinusoidDoc();
 	bool m_bCoord, m_bSinus, m_bHatch, m_bHatch45;
 #ifdef _DEBUG

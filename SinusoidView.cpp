@@ -60,6 +60,13 @@ BOOL CSinusoidView::PreCreateWindow(CREATESTRUCT& cs)
 // Рисование CSinusoidView
 
 
+double CSinusoidView::f(double x)
+{
+	return 0;
+}
+
+
+
 void CSinusoidView::OnDraw(CDC* pDC)
 {
 	//CPaintDC dc(this);
@@ -106,6 +113,7 @@ void CSinusoidView::OnDraw(CDC* pDC)
 
 		
 	}
+	double a = f(1);
 	if (pDoc->m_bHatch)
 	{
 		for (int x = 0; x < rc.Width();x++)
@@ -128,30 +136,21 @@ void CSinusoidView::OnDraw(CDC* pDC)
 	}
 	if (pDoc->m_bHatch45)
 	{
-		for (int x = 0; x < rc.Width();x++)
+		pDC->MoveTo(rc.Width()/2, rc.Height() / 2);
+
+		for (int x = rc.Width()/2; x < rc.Width();x++)
 		{
-			double X_rad = x * mx;
-			int y = rc.Height() / 2 + sin(-X_rad) / my;
-
-			if (x < rc.Width() / 2)
+			double infinum, double supremum;
+			if (x % 20 == 0)
 			{
-				if (x % 40 == 0 && x * 2 < rc.Width() / 2)
-				{
+				double b = x - rc.Width()/2; // Смещение прямой
+				//f(x) = kx + b, где k - тангенс угла наклона, b - смещение прямой
+				infinum  = -rc.Width();//начало интервала
+				supremum =  rc.Width();//конец интервала
 
-					/*CPen pen(PS_SOLID, 1, RGB(0, 255, 0));
-
-					pOld = pDC->SelectObject(&pen);*/
-
-					pDC->MoveTo(x, y);
-
-					pDC->LineTo(x * 2, rc.Height() / 2);
-					//pDC->SelectObject(pOld);
-					//pOld = pDC->SelectObject(&pen);
+				const double eps = 0.00001;
 
 
-
-
-				}
 
 			}
 		}

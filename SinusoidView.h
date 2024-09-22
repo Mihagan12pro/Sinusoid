@@ -11,8 +11,10 @@ protected: // создать только из сериализации
 	CSinusoidView() noexcept;
 	DECLARE_DYNCREATE(CSinusoidView)
 
+
 // Атрибуты
 public:
+	
 	CSinusoidDoc* GetDocument() const;
 
 // Операции
@@ -36,6 +38,9 @@ public:
 #endif
 
 protected:
+	double f(double x);
+
+	double EquationSolver();
 
 // Созданные функции схемы сообщений
 protected:
