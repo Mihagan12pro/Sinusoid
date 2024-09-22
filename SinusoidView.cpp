@@ -60,9 +60,15 @@ BOOL CSinusoidView::PreCreateWindow(CREATESTRUCT& cs)
 // Рисование CSinusoidView
 
 
-double CSinusoidView::f(double x)
+double CSinusoidView::F(double x,double b)
 {
-	return 0;
+	CRect rcLocal;
+	GetClientRect(&rcLocal);
+	double period = rcLocal.Width() / 2;
+	double amplitude = rcLocal.Height() / 2;
+	double frequency = 3.14 / period * x; // Частота
+	
+	return amplitude * sin(frequency) - (1 * x + b); // Разность между синусом и уравнением прямой
 }
 
 
@@ -113,7 +119,7 @@ void CSinusoidView::OnDraw(CDC* pDC)
 
 		
 	}
-	double a = f(1);
+	
 	if (pDoc->m_bHatch)
 	{
 		for (int x = 0; x < rc.Width();x++)
@@ -140,16 +146,25 @@ void CSinusoidView::OnDraw(CDC* pDC)
 
 		for (int x = rc.Width()/2; x < rc.Width();x++)
 		{
-			double infinum, double supremum;
+			double infinum,  supremum;
 			if (x % 20 == 0)
 			{
+				double width = (double)rc.Width() / 2;
 				double b = x - rc.Width()/2; // Смещение прямой
 				//f(x) = kx + b, где k - тангенс угла наклона, b - смещение прямой
-				infinum  = -rc.Width();//начало интервала
-				supremum =  rc.Width();//конец интервала
+				infinum  = -width;//начало интервала
+				supremum =  width;//конец интервала
 
-				const double eps = 0.00001;
+				
+				while (fabs(supremum - infinum) > eps)
+				{
+					infinum = supremum - (supremum - infinum) * F(supremum,b) / (F(
+						supremum,b) - F(infinum,b));
+					supremum = infinum - (infinum - supremum) * F(infinum,b) / (F(
+						infinum,b) - F(supremum,b));
+				}
 
+			
 
 
 			}

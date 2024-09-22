@@ -38,9 +38,11 @@ public:
 #endif
 
 protected:
-	double f(double x);
+	const double eps = 0.00001;
 
-	double EquationSolver();
+	double F(double x,double b);
+
+	double EquationSolver(double inf,double supr);
 
 // Созданные функции схемы сообщений
 protected:
