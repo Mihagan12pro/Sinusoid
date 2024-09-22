@@ -41,9 +41,9 @@ protected:
 	const double eps = 1e-6;
 	const double PI = 3.14;
 
-	double EquationSolver(double a, double b, double m, double b_const, double amplitude, double period);
-	double f(double x, double m, double b, double amplitude, double period);
-	double bisection(double a, double b, double m, double b_const, double amplitude, double period);
+	//double EquationSolver(double a, double b, double m, double b_const, double amplitude, double period);
+	double f(double x,  double b, double amplitude, double period);
+	double EquationSolverByDichotomy(double a, double b,  double b_const, double amplitude, double period);
 // Созданные функции схемы сообщений
 protected:
 	DECLARE_MESSAGE_MAP()
