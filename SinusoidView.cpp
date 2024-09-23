@@ -68,7 +68,7 @@ void CSinusoidView::OnDraw(CDC* pDC)
 {
 	//CPaintDC dc(this);
 
-	
+
 
 	CSinusoidDoc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
@@ -94,10 +94,10 @@ void CSinusoidView::OnDraw(CDC* pDC)
 	{
 		CPen pen(PS_SOLID, 1, RGB(255, 0, 0));
 
-		 pOld = pDC->SelectObject(&pen);
+		pOld = pDC->SelectObject(&pen);
 
 		//pDC->MoveTo(0, rc.Height() / 2);
-		
+
 
 		for (int x = 0; x < rc.Width();x++)
 		{
@@ -108,9 +108,9 @@ void CSinusoidView::OnDraw(CDC* pDC)
 		}
 		pDC->SelectObject(pOld);
 
-		
+
 	}
-	
+
 	if (pDoc->m_bHatch)
 	{
 
@@ -134,22 +134,22 @@ void CSinusoidView::OnDraw(CDC* pDC)
 	}
 	if (pDoc->m_bHatch45)
 	{
-		double halfWidth = rc.Width()/2;
+		double halfWidth = rc.Width() / 2;
 		double halfHeight = rc.Height() / 2;
 		double height = rc.Height();
-		
-		
+
+
 		for (int x = 0; x < rc.Width(); x++)
 		{
-		
-			if (x % 60 == 0 )
+
+			if (x % 60 == 0)
 			{
 				double b = x - halfWidth; // Смещение прямой
 
 				double start = -rc.Width(); // Начало интервала
 				double end = rc.Width(); // Конец интервала
 
-				double root = EquationSolverByDichotomy(start, end,  b, halfHeight, halfWidth);
+				double root = EquationSolverByDichotomy(start, end, b, halfHeight, halfWidth);
 				double y = halfHeight * sin(PI / halfWidth * root);
 
 				double Y = height - halfHeight - y;
@@ -163,19 +163,72 @@ void CSinusoidView::OnDraw(CDC* pDC)
 				{
 					pDC->MoveTo(X, Y);
 					pDC->LineTo(x, halfHeight);
-				}	
+				}
 			}
 		}
 	}
 
-	if (pDoc -> m_bBrush)
+	if (pDoc->m_bBrush)
 	{
+		CPen pen(PS_SOLID, 1, RGB(255, 202, 134));
+		CBrush brush(HS_VERTICAL, RGB(146, 110, 174));
 
+		CBrush* pOldBrush = pDC->SelectObject(&brush);
+		CPen* pOld = pDC->SelectObject(&pen);
+
+		vector<POINT> pointsVec;
+
+
+
+
+		for (int x = 0; x < rc.Width() / 2;x++)
+		{
+
+			POINT point;
+
+			point.x = x;
+			point.y = rc.Height() / 2;
+
+			pointsVec.push_back(point);
+		}
+
+		for (int x = 0; x < rc.Width();x++)
+		{
+			double X_rad = x * mx;
+			int y = rc.Height() / 2 + sin(X_rad) / my;
+			/*CPen pen(PS_SOLID, 1, RGB(0, 255, 0));
+
+			pOld = pDC->SelectObject(&pen);*/
+			if (y != rc.Height() / 2)
+			{
+
+				POINT point;
+
+				point.x = x;
+				point.y = y;
+
+				pointsVec.push_back(point);
+
+			}
+			//pDC->LineTo(x, y);
+			//pDC->SelectObject(pOld);
+		}
+
+		POINT* pointsArr = new POINT[pointsVec.size()];
+
+		for (int i = 0;i < pointsVec.size();i++)
+
+			pointsArr[i] = pointsVec[i];
+
+		pDC->Polygon(pointsArr, pointsVec.size());
+
+
+		pDC->SelectObject(pOldBrush);
 	}
 }
 
 
-double CSinusoidView::f(double x, double b, double amplitude, double period) 
+double CSinusoidView::f(double x, double b, double amplitude, double period)
 {
 	double frequency = PI / period * x; // Частота
 	return amplitude * sin(frequency) - (1 * x + b); // Разность между синусом и уравнением прямой
@@ -183,18 +236,18 @@ double CSinusoidView::f(double x, double b, double amplitude, double period)
 
 
 // Метод бисекции
-double CSinusoidView::EquationSolverByDichotomy(double start, double end,double b_const, double amplitude, double period) {
+double CSinusoidView::EquationSolverByDichotomy(double start, double end, double b_const, double amplitude, double period) {
 
 
 	double root;
 	while ((end - start) >= eps)
 	{
 		root = (start + end) / 2; // Средняя точка
-		if (f(root,  b_const, amplitude, period) == 0.0)
+		if (f(root, b_const, amplitude, period) == 0.0)
 		{
 			break; // c является корнем
 		}
-		else if (f(root,  b_const, amplitude, period) * f(start,  b_const, amplitude, period) < 0)
+		else if (f(root, b_const, amplitude, period) * f(start, b_const, amplitude, period) < 0)
 		{
 			end = root; // Корень находится в левой части
 		}
@@ -212,16 +265,16 @@ double CSinusoidView::SimpleIterations(double start, double end, double b_const,
 	{
 		double a, b;
 		//признак того что на интервале есть корень
-		if (f(x,b_const,amplitude,period) * f(0.1+x,b_const, amplitude, period ) < 0)
+		if (f(x, b_const, amplitude, period) * f(0.1 + x, b_const, amplitude, period) < 0)
 		{
-			 a = x; //левая граница интервала уточнения корня
-			 b = x + 0.1; //правая граница интервала уточнения корня
+			a = x; //левая граница интервала уточнения корня
+			b = x + 0.1; //правая граница интервала уточнения корня
 			//цикл уточнения корня
 			while (fabs(b - a) > eps)
 			{
 				double c = (a + b) / 2.f; //середина очередного интервала
 				//признак нахождения корня в левом интервале
-				if (f(c, b_const, amplitude, period) * f(a,  b_const, amplitude, period) < 0)
+				if (f(c, b_const, amplitude, period) * f(a, b_const, amplitude, period) < 0)
 				{
 					b = c; //отбрасываем правый интервал
 				}
@@ -230,8 +283,8 @@ double CSinusoidView::SimpleIterations(double start, double end, double b_const,
 					a = c; //отбрасываем левый интервал
 
 			}
-			return (a + b) /-2.f;
-			
+			return (a + b) / -2.f;
+
 			//вывод сообщения о том что найден корень
 			//cout << "Найден корень " << (a + b) / 2.f << "\n";
 		}
