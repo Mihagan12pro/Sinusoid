@@ -39,6 +39,7 @@ void CControlTreeView::FillTree()
 	m_hSinus = tree.InsertItem(L"Синус", -1, -1, m_hMain, TVI_FIRST);
 	m_hHatch = tree.InsertItem(L"Штриховка", -1, -1, m_hMain, TVI_FIRST);
 	m_hHatch45 = tree.InsertItem(L"Штриховка 45 градусов", -1, -1, m_hMain, TVI_FIRST);
+	m_hBrush = tree.InsertItem(L"Штриховка Brush", -1, -1, m_hMain, TVI_FIRST);
 
 	tree.Expand(m_hSinus, TVE_EXPAND);
 }
@@ -110,6 +111,9 @@ void CControlTreeView::OnLButtonDown(UINT nFlags, CPoint point)
 		tree.SelectItem(m_hHatch45);
 	tree.GetItemRect(m_hHatch45, &rc, false);
 
+	if (rc.PtInRect(point))
+		tree.SelectItem(m_hBrush);
+	tree.GetItemRect(m_hBrush, &rc, false);
 
 
 
@@ -121,7 +125,7 @@ void CControlTreeView::OnLButtonDown(UINT nFlags, CPoint point)
 		tree.SetCheck(m_hSinus, check);
 		tree.SetCheck(m_hHatch, check);
 		tree.SetCheck(m_hHatch45, check);
-
+		tree.SetCheck(m_hBrush, check);
 	}
 	else
 		tree.SetCheck(m_hMain, false);
@@ -130,6 +134,7 @@ void CControlTreeView::OnLButtonDown(UINT nFlags, CPoint point)
 	m_pDoc->m_bSinus = tree.GetCheck(m_hSinus);
 	m_pDoc->m_bHatch = tree.GetCheck(m_hHatch);
 	m_pDoc->m_bHatch45 = tree.GetCheck(m_hHatch45);
+	m_pDoc->m_bBrush = tree.GetCheck(m_hBrush);
 
 	m_pDoc->m_pView->Invalidate();
 

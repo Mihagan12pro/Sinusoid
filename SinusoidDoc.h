@@ -39,7 +39,7 @@ public:
 public:
 
 	virtual ~CSinusoidDoc();
-	bool m_bCoord, m_bSinus, m_bHatch, m_bHatch45;
+	bool m_bCoord, m_bSinus, m_bHatch, m_bHatch45,m_bBrush;
 #ifdef _DEBUG
 	virtual void AssertValid() const;
 	virtual void Dump(CDumpContext& dc) const;

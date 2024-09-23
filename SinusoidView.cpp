@@ -163,72 +163,16 @@ void CSinusoidView::OnDraw(CDC* pDC)
 				{
 					pDC->MoveTo(X, Y);
 					pDC->LineTo(x, halfHeight);
-				}
-				
+				}	
 			}
 		}
-		//for (int x = rc.Width()/2; x < rc.Width();x++)
-		//{
-		//	pDC->MoveTo(0, rc.Height() / 2);
-		//	double infinum,  supremum;
-
-
-		//	double halfWidth = rc.Width()/2;
-		//	double halfHeight = rc.Height() / 2;
-		//	double height = rc.Height();
-
-		//	if (x % 20 == 0)
-		//	{
-		//		double b = x - halfWidth; // Смещение прямой
-
-		//		 infinum = -1000.0; // Начало интервала
-		//		supremum = 1000.0; // Конец интервала
-
-		//		double root = EquationSolver(infinum, supremum, 1, b, halfHeight, halfWidth);
-		//		double y = halfHeight * sin(PI / halfWidth * root);
-
-		//		double Y = height - halfHeight - y;
-		//		double X = halfWidth + root;
-		//		pDC->LineTo(X, Y);
-		//		
-		//	}
-		//}
-
-
 	}
 
+	if (pDoc -> m_bBrush)
+	{
 
-	
+	}
 }
-//
-//double CSinusoidView::EquationSolver(double a, double b, double m, double b_const, double amplitude, double period)
-//{
-//
-//
-//	double c;
-//	while ((b - a) >= 1e-6)
-//	{
-//		c = (a + b) / 2; // Средняя точка
-//		if (f(c, m, b_const, amplitude, period) == 0.0)
-//		{
-//			break; // c является корнем
-//		}
-//		else if (f(c, m, b_const, amplitude, period) * f(a, m, b_const, amplitude, period) < 0)
-//		{
-//			b = c; // Корень находится в левой части
-//		}
-//		else
-//		{
-//			a = c; // Корень находится в правой части
-//		}
-//	}
-//	return (a + b) / -2; // Возвращаем среднюю точку как приближенную к корню
-//}
-//double CSinusoidView::f(double x, double m, double b, double amplitude, double period)
-//{
-//	double frequency = PI / period * x; // Частота
-//	return amplitude * sin(frequency) - (1 * x + b); // Разность между синусом и уравнением прямой
-//}
 
 
 double CSinusoidView::f(double x, double b, double amplitude, double period) 

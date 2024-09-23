@@ -17,7 +17,7 @@ public:
 	
 
 	void FillTree();
-	HTREEITEM  m_hCoord, m_hSinus, m_hHatch, m_hMain, m_hHatch45;
+	HTREEITEM  m_hCoord, m_hSinus, m_hHatch, m_hMain, m_hHatch45,m_hBrush;
 #ifdef _DEBUG
 	virtual void AssertValid() const;
 #ifndef _WIN32_WCE

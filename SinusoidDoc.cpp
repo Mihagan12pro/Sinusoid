@@ -60,7 +60,7 @@ BOOL CSinusoidDoc::OnNewDocument()
 
 	m_pTreeView->FillTree();
 
-m_bHatch45=	m_bCoord = m_bSinus = m_bHatch = false;
+	m_bHatch45=	m_bCoord = m_bSinus = m_bHatch = m_bBrush = false;
 
 	return TRUE;
 }
