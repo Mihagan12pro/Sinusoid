@@ -170,29 +170,29 @@ void CSinusoidView::OnDraw(CDC* pDC)
 
 	if (pDoc->m_bBrush)
 	{
-		CPen pen(PS_SOLID, 1, RGB(255, 202, 134));
+		//CPen pen(PS_SOLID, 1, RGB(255, 202, 134));
 		CBrush brush(HS_VERTICAL, RGB(146, 110, 174));
 
 		CBrush* pOldBrush = pDC->SelectObject(&brush);
-		CPen* pOld = pDC->SelectObject(&pen);
+		//CPen* pOld = pDC->SelectObject(&pen);
 
 		vector<POINT> pointsVec;
 
 
 
 
-		for (int x = 0; x < rc.Width() / 2;x++)
-		{
+		//for (int x = rc.Width()/2; x < rc.Width() ;x++)
+		//{
 
-			POINT point;
+		//	POINT point;
 
-			point.x = x;
-			point.y = rc.Height() / 2;
+		//	point.x = x;
+		//	point.y = rc.Height() / 2;
 
-			pointsVec.push_back(point);
-		}
+		//	pointsVec.push_back(point);
+		//}
 
-		for (int x = 0; x < rc.Width();x++)
+		for (int x = 0; x < 1+ rc.Width();x++)
 		{
 			double X_rad = x * mx;
 			int y = rc.Height() / 2 + sin(X_rad) / my;
@@ -214,13 +214,15 @@ void CSinusoidView::OnDraw(CDC* pDC)
 			//pDC->SelectObject(pOld);
 		}
 
+	
+
 		POINT* pointsArr = new POINT[pointsVec.size()];
 
 		for (int i = 0;i < pointsVec.size();i++)
 
 			pointsArr[i] = pointsVec[i];
 
-		pDC->Polygon(pointsArr, pointsVec.size());
+		pDC-> Polygon(pointsArr, pointsVec.size());
 
 
 		pDC->SelectObject(pOldBrush);
