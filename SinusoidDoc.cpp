@@ -10,7 +10,7 @@
 #include"MainFrm.h"
 #endif
 #include"CControlTreeView.h"
-
+#include"SinusoidView.h"
 #include "SinusoidDoc.h"
 
 #include <propkey.h>
@@ -158,11 +158,15 @@ void CSinusoidDoc::Dump(CDumpContext& dc) const
 
 void CSinusoidDoc::OnCoordsEventHandler()
 {
+	m_bCoord = !m_bCoord;
+	m_pView->Invalidate();
 	// TODO: добавьте свой код обработчика команд
 }
 
 
 void CSinusoidDoc::OnSinusEventHandler()
 {
+	m_bSinus = !m_bSinus;
+	m_pView->Invalidate();
 	// TODO: добавьте свой код обработчика команд
 }

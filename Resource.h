@@ -10,13 +10,21 @@
 #define ID_32772                        32772
 #define ID_coords                       32773
 #define ID_sinus                        32774
+#define ID_Menu                         32775
+#define ID_32776                        32776
+#define ID_hatch                        32777
+#define ID_32778                        32778
+#define ID_                             32779
+#define ID_hatch45                      32780
+#define ID_32781                        32781
+#define ID_brush                        32782
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        310
-#define _APS_NEXT_COMMAND_VALUE         32775
+#define _APS_NEXT_COMMAND_VALUE         32783
 #define _APS_NEXT_CONTROL_VALUE         1000
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
