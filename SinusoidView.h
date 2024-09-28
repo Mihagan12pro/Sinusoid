@@ -48,6 +48,8 @@ protected:
 	double SimpleIterations(double start, double end, double b_const, double amplitude, double period);
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
 };
 
 #ifndef _DEBUG  // версия отладки в SinusoidView.cpp
