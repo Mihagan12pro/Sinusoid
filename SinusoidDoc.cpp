@@ -177,10 +177,12 @@ void CSinusoidDoc::OnSinusEventHandler()
 void CSinusoidDoc::OnUpdateCoordsUI(CCmdUI* pCmdUI)
 {
 	// TODO: добавьте свой код обработчика ИП обновления команд
+	pCmdUI->SetCheck(m_bCoord);
 }
 
 
 void CSinusoidDoc::OnUpdateSinusUI(CCmdUI* pCmdUI)
 {
 	// TODO: добавьте свой код обработчика ИП обновления команд
+	pCmdUI->SetCheck(m_bSinus);
 }
