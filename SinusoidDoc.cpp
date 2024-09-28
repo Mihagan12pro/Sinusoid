@@ -162,6 +162,7 @@ void CSinusoidDoc::OnCoordsEventHandler()
 {
 	m_bCoord = !m_bCoord;
 	m_pView->Invalidate();
+
 	// TODO: добавьте свой код обработчика команд
 }
 
@@ -170,6 +171,8 @@ void CSinusoidDoc::OnSinusEventHandler()
 {
 	m_bSinus = !m_bSinus;
 	m_pView->Invalidate();
+
+	m_pTreeView->FillTree();//Обновление дерева из дополнительного вида документа
 	// TODO: добавьте свой код обработчика команд
 }
 
@@ -178,6 +181,8 @@ void CSinusoidDoc::OnUpdateCoordsUI(CCmdUI* pCmdUI)
 {
 	// TODO: добавьте свой код обработчика ИП обновления команд
 	pCmdUI->SetCheck(m_bCoord);
+
+	m_pTreeView->FillTree();//Обновление дерева из дополнительного вида документа
 }
 
 
@@ -185,4 +190,6 @@ void CSinusoidDoc::OnUpdateSinusUI(CCmdUI* pCmdUI)
 {
 	// TODO: добавьте свой код обработчика ИП обновления команд
 	pCmdUI->SetCheck(m_bSinus);
+
+	m_pTreeView->FillTree();//Обновление дерева из дополнительного вида документа
 }

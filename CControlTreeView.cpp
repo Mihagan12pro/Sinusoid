@@ -41,6 +41,11 @@ void CControlTreeView::FillTree()
 	m_hHatch45 = tree.InsertItem(L"Штриховка 45 градусов", -1, -1, m_hMain, TVI_FIRST);
 	m_hBrush = tree.InsertItem(L"Штриховка Brush", -1, -1, m_hMain, TVI_FIRST);
 
+	 
+
+	tree.SetCheck(m_hCoord, m_pDoc->m_bCoord);
+	tree.SetCheck(m_hSinus, m_pDoc->m_bSinus);
+
 	tree.Expand(m_hSinus, TVE_EXPAND);
 }
 
