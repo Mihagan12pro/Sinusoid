@@ -24,6 +24,8 @@
 IMPLEMENT_DYNCREATE(CSinusoidDoc, CDocument)
 
 BEGIN_MESSAGE_MAP(CSinusoidDoc, CDocument)
+	ON_COMMAND(ID_coords, &CSinusoidDoc::OnCoordsEventHandler)
+	ON_COMMAND(ID_sinus, &CSinusoidDoc::OnSinusEventHandler)
 END_MESSAGE_MAP()
 
 
@@ -152,3 +154,15 @@ void CSinusoidDoc::Dump(CDumpContext& dc) const
 
 
 // Команды CSinusoidDoc
+
+
+void CSinusoidDoc::OnCoordsEventHandler()
+{
+	// TODO: добавьте свой код обработчика команд
+}
+
+
+void CSinusoidDoc::OnSinusEventHandler()
+{
+	// TODO: добавьте свой код обработчика команд
+}
