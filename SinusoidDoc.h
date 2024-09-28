@@ -58,4 +58,6 @@ protected:
 public:
 	afx_msg void OnCoordsEventHandler();
 	afx_msg void OnSinusEventHandler();
+	afx_msg void OnUpdateCoordsUI(CCmdUI* pCmdUI);
+	afx_msg void OnUpdateSinusUI(CCmdUI* pCmdUI);
 };

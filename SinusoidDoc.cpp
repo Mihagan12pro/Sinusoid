@@ -26,6 +26,8 @@ IMPLEMENT_DYNCREATE(CSinusoidDoc, CDocument)
 BEGIN_MESSAGE_MAP(CSinusoidDoc, CDocument)
 	ON_COMMAND(ID_coords, &CSinusoidDoc::OnCoordsEventHandler)
 	ON_COMMAND(ID_sinus, &CSinusoidDoc::OnSinusEventHandler)
+	ON_UPDATE_COMMAND_UI(ID_coords, &CSinusoidDoc::OnUpdateCoordsUI)
+	ON_UPDATE_COMMAND_UI(ID_sinus, &CSinusoidDoc::OnUpdateSinusUI)
 END_MESSAGE_MAP()
 
 
@@ -169,4 +171,16 @@ void CSinusoidDoc::OnSinusEventHandler()
 	m_bSinus = !m_bSinus;
 	m_pView->Invalidate();
 	// TODO: добавьте свой код обработчика команд
+}
+
+
+void CSinusoidDoc::OnUpdateCoordsUI(CCmdUI* pCmdUI)
+{
+	// TODO: добавьте свой код обработчика ИП обновления команд
+}
+
+
+void CSinusoidDoc::OnUpdateSinusUI(CCmdUI* pCmdUI)
+{
+	// TODO: добавьте свой код обработчика ИП обновления команд
 }
