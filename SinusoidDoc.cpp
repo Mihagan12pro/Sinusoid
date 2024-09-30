@@ -28,6 +28,12 @@ BEGIN_MESSAGE_MAP(CSinusoidDoc, CDocument)
 	ON_COMMAND(ID_sinus, &CSinusoidDoc::OnSinusEventHandler)
 	ON_UPDATE_COMMAND_UI(ID_coords, &CSinusoidDoc::OnUpdateCoordsUI)
 	ON_UPDATE_COMMAND_UI(ID_sinus, &CSinusoidDoc::OnUpdateSinusUI)
+	ON_COMMAND(ID_hatch, &CSinusoidDoc::OnHatchEventHandler)
+	ON_COMMAND(ID_hatch45, &CSinusoidDoc::OnHatch45EventHandler)
+	ON_COMMAND(ID_brush, &CSinusoidDoc::OnBrushEventHandler)
+	ON_UPDATE_COMMAND_UI(ID_brush, &CSinusoidDoc::OnUpdateBrushUI)
+	ON_UPDATE_COMMAND_UI(ID_hatch, &CSinusoidDoc::OnUpdateHatchUI)
+	ON_UPDATE_COMMAND_UI(ID_hatch45, &CSinusoidDoc::OnUpdateHatch45UI)
 END_MESSAGE_MAP()
 
 
@@ -162,7 +168,7 @@ void CSinusoidDoc::OnCoordsEventHandler()
 {
 	m_bCoord = !m_bCoord;
 	m_pView->Invalidate();
-
+	m_pTreeView->FillTree();
 	// TODO: добавьте свой код обработчика команд
 }
 
@@ -192,4 +198,58 @@ void CSinusoidDoc::OnUpdateSinusUI(CCmdUI* pCmdUI)
 	pCmdUI->SetCheck(m_bSinus);
 
 	m_pTreeView->FillTree();//Обновление дерева из дополнительного вида документа
+}
+
+
+void CSinusoidDoc::OnHatchEventHandler()
+{
+	m_bHatch = !m_bHatch;
+	m_pView->Invalidate();
+	m_pTreeView->FillTree();
+	// TODO: добавьте свой код обработчика команд
+}
+
+
+void CSinusoidDoc::OnHatch45EventHandler()
+{
+	m_bHatch45 = !m_bHatch45;
+	m_pView->Invalidate();
+	m_pTreeView->FillTree();
+	// TODO: добавьте свой код обработчика команд
+}
+
+
+void CSinusoidDoc::OnBrushEventHandler()
+{
+	m_bBrush = !m_bBrush;
+	m_pView->Invalidate();
+	m_pTreeView->FillTree();
+	// TODO: добавьте свой код обработчика команд
+}
+
+
+void CSinusoidDoc::OnUpdateBrushUI(CCmdUI* pCmdUI)
+{
+	pCmdUI->SetCheck(m_bBrush);
+
+	m_pTreeView->FillTree();
+	// TODO: добавьте свой код обработчика ИП обновления команд
+}
+
+
+void CSinusoidDoc::OnUpdateHatchUI(CCmdUI* pCmdUI)
+{
+	pCmdUI->SetCheck(m_bHatch);
+
+	m_pTreeView->FillTree();
+	// TODO: добавьте свой код обработчика ИП обновления команд
+}
+
+
+void CSinusoidDoc::OnUpdateHatch45UI(CCmdUI* pCmdUI)
+{
+	pCmdUI->SetCheck(m_bHatch45);
+
+	m_pTreeView->FillTree();
+	// TODO: добавьте свой код обработчика ИП обновления команд
 }

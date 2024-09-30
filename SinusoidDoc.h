@@ -60,4 +60,10 @@ public:
 	afx_msg void OnSinusEventHandler();
 	afx_msg void OnUpdateCoordsUI(CCmdUI* pCmdUI);
 	afx_msg void OnUpdateSinusUI(CCmdUI* pCmdUI);
+	afx_msg void OnHatchEventHandler();
+	afx_msg void OnHatch45EventHandler();
+	afx_msg void OnBrushEventHandler();
+	afx_msg void OnUpdateBrushUI(CCmdUI* pCmdUI);
+	afx_msg void OnUpdateHatchUI(CCmdUI* pCmdUI);
+	afx_msg void OnUpdateHatch45UI(CCmdUI* pCmdUI);
 };

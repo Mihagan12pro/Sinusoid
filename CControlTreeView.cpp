@@ -45,6 +45,8 @@ void CControlTreeView::FillTree()
 
 	tree.SetCheck(m_hCoord, m_pDoc->m_bCoord);
 	tree.SetCheck(m_hSinus, m_pDoc->m_bSinus);
+	tree.SetCheck(m_hHatch, m_pDoc->m_bHatch);
+	tree.SetCheck(m_hHatch45, m_pDoc->m_bHatch45);
 
 	tree.Expand(m_hSinus, TVE_EXPAND);
 }
