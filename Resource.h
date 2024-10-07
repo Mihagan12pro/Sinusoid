@@ -7,6 +7,9 @@
 #define IDR_MAINFRAME                   128
 #define IDR_SinusoidTYPE                130
 #define IDD_DIALOG1                     310
+#define IDC_CHECK1                      1000
+#define IDC_CoordsCB                    1000
+#define IDC_SinusCB                     1001
 #define ID_32771                        32771
 #define ID_32772                        32772
 #define ID_coords                       32773
@@ -26,7 +29,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        312
 #define _APS_NEXT_COMMAND_VALUE         32783
-#define _APS_NEXT_CONTROL_VALUE         1000
+#define _APS_NEXT_CONTROL_VALUE         1002
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif
