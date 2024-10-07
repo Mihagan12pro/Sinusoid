@@ -265,5 +265,19 @@ void CSinusoidDoc::OnObjectsDlg()
 
 	CObjectsDlg dlg;
 
+	dlg.m_bCoord = m_bCoord;
+	dlg.m_bSinus = m_bSinus;
+
 	dlg.DoModal();
+
+	m_bCoord = dlg.m_bCoord;
+	m_bSinus = dlg.m_bSinus;
+
+	m_pTreeView -> Invalidate();
+	m_pTreeView -> FillTree();
+
+	
+
+
+
 }
