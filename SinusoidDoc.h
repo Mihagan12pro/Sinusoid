@@ -66,4 +66,5 @@ public:
 	afx_msg void OnUpdateBrushUI(CCmdUI* pCmdUI);
 	afx_msg void OnUpdateHatchUI(CCmdUI* pCmdUI);
 	afx_msg void OnUpdateHatch45UI(CCmdUI* pCmdUI);
+	afx_msg void OnObjectsDlg();
 };

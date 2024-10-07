@@ -7,7 +7,6 @@
 #define IDR_MAINFRAME                   128
 #define IDR_SinusoidTYPE                130
 #define IDD_DIALOG1                     310
-#define IDC_CHECK1                      1000
 #define IDC_CoordsCB                    1000
 #define IDC_SinusCB                     1001
 #define ID_32771                        32771
@@ -22,13 +21,15 @@
 #define ID_hatch45                      32780
 #define ID_32781                        32781
 #define ID_brush                        32782
+#define ID_32783                        32783
+#define ID_Objects_Dlg                  32784
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        312
-#define _APS_NEXT_COMMAND_VALUE         32783
+#define _APS_NEXT_COMMAND_VALUE         32785
 #define _APS_NEXT_CONTROL_VALUE         1002
 #define _APS_NEXT_SYMED_VALUE           310
 #endif

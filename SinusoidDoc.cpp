@@ -12,8 +12,11 @@
 #include"CControlTreeView.h"
 #include"SinusoidView.h"
 #include "SinusoidDoc.h"
+#include"CObjectsDlg.h"
 
 #include <propkey.h>
+
+
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -34,6 +37,7 @@ BEGIN_MESSAGE_MAP(CSinusoidDoc, CDocument)
 	ON_UPDATE_COMMAND_UI(ID_brush, &CSinusoidDoc::OnUpdateBrushUI)
 	ON_UPDATE_COMMAND_UI(ID_hatch, &CSinusoidDoc::OnUpdateHatchUI)
 	ON_UPDATE_COMMAND_UI(ID_hatch45, &CSinusoidDoc::OnUpdateHatch45UI)
+	ON_COMMAND(ID_Objects_Dlg, &CSinusoidDoc::OnObjectsDlg)
 END_MESSAGE_MAP()
 
 
@@ -252,4 +256,14 @@ void CSinusoidDoc::OnUpdateHatch45UI(CCmdUI* pCmdUI)
 
 	m_pTreeView->FillTree();
 	// TODO: добавьте свой код обработчика ИП обновления команд
+}
+
+
+void CSinusoidDoc::OnObjectsDlg()
+{
+	// TODO: добавьте свой код обработчика команд
+
+	CObjectsDlg dlg;
+
+	dlg.DoModal();
 }
