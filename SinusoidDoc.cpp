@@ -192,7 +192,7 @@ void CSinusoidDoc::OnUpdateCoordsUI(CCmdUI* pCmdUI)
 	// TODO: добавьте свой код обработчика ИП обновления команд
 	pCmdUI->SetCheck(m_bCoord);
 
-	m_pTreeView->FillTree();//Обновление дерева из дополнительного вида документа
+	
 }
 
 
@@ -201,7 +201,7 @@ void CSinusoidDoc::OnUpdateSinusUI(CCmdUI* pCmdUI)
 	// TODO: добавьте свой код обработчика ИП обновления команд
 	pCmdUI->SetCheck(m_bSinus);
 
-	m_pTreeView->FillTree();//Обновление дерева из дополнительного вида документа
+	
 }
 
 
@@ -268,16 +268,18 @@ void CSinusoidDoc::OnObjectsDlg()
 	dlg.m_bCoord = m_bCoord;
 	dlg.m_bSinus = m_bSinus;
 
-	dlg.DoModal();
+	if (dlg.DoModal() == IDOK)
+	{
+		m_bCoord = dlg.m_bCoord;
+		m_bSinus = dlg.m_bSinus;
 
-	m_bCoord = dlg.m_bCoord;
-	m_bSinus = dlg.m_bSinus;
+		m_pTreeView->FillTree();
+		m_pTreeView->Invalidate(TRUE);
+		
+		CWnd* pWnd = AfxGetMainWnd();
 
-	m_pTreeView -> Invalidate();
-	m_pTreeView -> FillTree();
-
-	
-
-
-
+		pWnd->Invalidate();
+		pWnd->UpdateWindow();
+		// Освобождаем контекст устройств
+	}
 }

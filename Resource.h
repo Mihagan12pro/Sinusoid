@@ -6,7 +6,8 @@
 #define IDP_OLE_INIT_FAILED             100
 #define IDR_MAINFRAME                   128
 #define IDR_SinusoidTYPE                130
-#define IDD_DIALOG1                     310
+#define IDD_BaseElemsDlg                310
+#define IDD_ObjectsDlg                  310
 #define IDC_CoordsCB                    1000
 #define IDC_SinusCB                     1001
 #define ID_32771                        32771

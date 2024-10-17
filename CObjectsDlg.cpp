@@ -5,14 +5,15 @@
 #include "Sinusoid.h"
 #include "afxdialogex.h"
 #include "CObjectsDlg.h"
-
-
+#include"SinusoidDoc.h"
+#include "SinusoidView.h"
+#include"MainFrm.h"
 // Диалоговое окно CObjectsDlg
 
 IMPLEMENT_DYNAMIC(CObjectsDlg, CDialogEx)
 
 CObjectsDlg::CObjectsDlg(CWnd* pParent /*=nullptr*/)
-	: CDialogEx(IDD_DIALOG1, pParent)
+	: CDialogEx(IDD_ObjectsDlg, pParent)
 	, m_bCoord(FALSE)
 	, m_bSinus(FALSE)
 {

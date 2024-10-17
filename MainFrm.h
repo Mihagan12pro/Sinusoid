@@ -16,10 +16,10 @@ public:
 
 // Операции
 public:
-
+	
 // Переопределение
 public:
-
+	
 	
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 

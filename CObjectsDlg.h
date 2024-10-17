@@ -22,6 +22,7 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
+	
 	BOOL m_bCoord;
 	BOOL m_bSinus;
 };
