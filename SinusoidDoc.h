@@ -24,7 +24,7 @@ public:
 	//static SinusoidFunction *sinusoida ;
 	CControlTreeView* m_pTreeView;
 	CSinusoidView *m_pView;
-	CNonModal *m_NonModal;
+	//CNonModal m_NonModal;
 // Операции
 public:
 

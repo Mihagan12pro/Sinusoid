@@ -4,7 +4,8 @@
 
 #pragma once
 class CSinusoidDoc;
-
+class CNonModal;
+#include"CNonModal.h"
 class CSinusoidView : public CView
 {
 protected: // создать только из сериализации
@@ -19,6 +20,8 @@ public:
 
 // Операции
 public:
+	CNonModal m_SinusColorDlg;
+	COLORREF m_SinusColor;
 
 // Переопределение
 public:

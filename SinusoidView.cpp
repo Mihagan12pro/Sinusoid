@@ -9,13 +9,14 @@
 #ifndef SHARED_HANDLERS
 #include "Sinusoid.h"
 #endif
-
+#include"CNonModal.h"
 #include "SinusoidDoc.h"
 #include "SinusoidView.h"
 
 #include<vector>
 
 #include<vector>
+#include"CNonModal.h"
 using namespace std;
 
 
@@ -366,5 +367,11 @@ void CSinusoidView::OnRButtonDown(UINT nFlags, CPoint point)
 
 void CSinusoidView::EventHandler_OnNonModal()
 {
+	if (!m_SinusColorDlg)
+	{
+		m_SinusColorDlg.Create(IDD_ChangeColorDlg, this);
+	}
+	m_SinusColorDlg.pMainView = this;
+	m_SinusColorDlg.ShowWindow(SW_SHOW);
 	// TODO: Add your command handler code here
 }
