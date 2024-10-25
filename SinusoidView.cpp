@@ -95,7 +95,7 @@ void CSinusoidView::OnDraw(CDC* pDC)
 
 	if (pDoc->m_bSinus)
 	{
-		CPen pen(PS_SOLID, 1, RGB(255, 0, 0));
+		CPen pen(PS_SOLID, 1, m_SinusColor);
 
 		pOld = pDC->SelectObject(&pen);
 
@@ -368,10 +368,11 @@ void CSinusoidView::OnRButtonDown(UINT nFlags, CPoint point)
 void CSinusoidView::EventHandler_OnNonModal()
 {
 	if (!m_SinusColorDlg)
-	{
 		m_SinusColorDlg.Create(IDD_ChangeColorDlg, this);
-	}
+	
+	m_SinusColorDlg.m_ColorCrl.SetColor(m_SinusColor);
 	m_SinusColorDlg.pMainView = this;
 	m_SinusColorDlg.ShowWindow(SW_SHOW);
+
 	// TODO: Add your command handler code here
 }
