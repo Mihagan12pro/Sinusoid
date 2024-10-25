@@ -184,6 +184,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CControlTreeView.h" />
+    <ClInclude Include="CNonModal.h" />
     <ClInclude Include="CObjectsDlg.h" />
     <ClInclude Include="defines.h" />
     <ClInclude Include="framework.h" />
@@ -197,6 +198,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CControlTreeView.cpp" />
+    <ClCompile Include="CNonModal.cpp" />
     <ClCompile Include="CObjectsDlg.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="pch.cpp">

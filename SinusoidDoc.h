@@ -11,6 +11,7 @@
 class CSinusoidView;
 class CMainFrm;
 class CControlTreeView;
+class CNonModal;
 
 class CSinusoidDoc : public CDocument
 {
@@ -23,8 +24,10 @@ public:
 	//static SinusoidFunction *sinusoida ;
 	CControlTreeView* m_pTreeView;
 	CSinusoidView *m_pView;
+	CNonModal *m_NonModal;
 // Операции
 public:
+
 
 // Переопределение
 public:
@@ -67,4 +70,5 @@ public:
 	afx_msg void OnUpdateHatchUI(CCmdUI* pCmdUI);
 	afx_msg void OnUpdateHatch45UI(CCmdUI* pCmdUI);
 	afx_msg void OnObjectsDlg();
+	afx_msg void OnNonModal();
 };

@@ -36,6 +36,7 @@ BEGIN_MESSAGE_MAP(CSinusoidView, CView)
 	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CView::OnFilePrintPreview)
 	ON_WM_RBUTTONDOWN()
+	ON_COMMAND(ID_non_Modal, &CSinusoidView::EventHandler_OnNonModal)
 END_MESSAGE_MAP()
 
 // Создание или уничтожение CSinusoidView
@@ -360,4 +361,10 @@ void CSinusoidView::OnRButtonDown(UINT nFlags, CPoint point)
 	pMenu->TrackPopupMenu(TPM_LEFTALIGN, point.x, point.y, this);
 
 	CView::OnRButtonDown(nFlags, point);
+}
+
+
+void CSinusoidView::EventHandler_OnNonModal()
+{
+	// TODO: Add your command handler code here
 }

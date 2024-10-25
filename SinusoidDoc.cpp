@@ -38,6 +38,7 @@ BEGIN_MESSAGE_MAP(CSinusoidDoc, CDocument)
 	ON_UPDATE_COMMAND_UI(ID_hatch, &CSinusoidDoc::OnUpdateHatchUI)
 	ON_UPDATE_COMMAND_UI(ID_hatch45, &CSinusoidDoc::OnUpdateHatch45UI)
 	ON_COMMAND(ID_Objects_Dlg, &CSinusoidDoc::OnObjectsDlg)
+	ON_COMMAND(ID_non_Modal, &CSinusoidDoc::OnNonModal)
 END_MESSAGE_MAP()
 
 
@@ -282,4 +283,20 @@ void CSinusoidDoc::OnObjectsDlg()
 		pWnd->UpdateWindow();
 		// Освобождаем контекст устройств
 	}
+}
+
+
+void CSinusoidDoc::OnNonModal()
+{
+	/*if (m_pNonModal != nullptr)
+	{
+
+
+
+		return;
+	}
+	CreateDialog(m_pNonModal);*/
+
+
+	// TODO: добавьте свой код обработчика команд
 }

@@ -48,6 +48,9 @@
     <ClInclude Include="CObjectsDlg.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="CNonModal.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sinusoid.cpp">
@@ -69,6 +72,9 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="CObjectsDlg.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="CNonModal.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
